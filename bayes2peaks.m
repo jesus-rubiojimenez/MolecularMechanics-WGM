@@ -1,6 +1,7 @@
 function [estBayesValues,estBayesSignal,estBayesData]=bayes2peaks(filename,modeNum,timeSeries,initialTime,finalTime,valleyLoc,localLength,optPlots)
 
-%% Molecular Mechanics Initiative%
+%% Molecular Mechanics Initiative
+%
 % Jesus Rubio Jimenez, PostDoc
 % University of Exeter
 % J.Rubio-Jimenez@exeter.ac.uk
