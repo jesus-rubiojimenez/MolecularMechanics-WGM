@@ -1,13 +1,13 @@
 function [rawData] = wgmRawData(filename,modeNum,timeSeries,initialTime,finalTime)
+
 %% Whispering Gallery Mode (WGM) sensor data
 % 
-% Jesús Rubio, PostDoc
+% JesÃºs Rubio, PostDoc
 % University of Exeter
 % Created: August 2020
-% Last update: August 2020
+% Last update: July 2021
 % 
 % This function retrives the WGM sensor data from the .txt files. 
-
 
 %% How to use this function
 %
@@ -27,55 +27,7 @@ function [rawData] = wgmRawData(filename,modeNum,timeSeries,initialTime,finalTim
 %  
 % Notes: 
 %   - Times are measured in s
-%   - Raw shifts and FWHMs measured in nm
-% 
-%% Available data
-% 
-% Narima's experiment (DNA)
-%
-% Different concentrations of NaCl
-%
-%   Analyse17Sep19Meas8Ana0.txt 20ml NaCl
-%   Analyse17Sep19Meas9Ana0.txt 50ml NaCl
-%   Analyse17Sep19Meas10Ana0.txt 100ml NaCl
-%   Analyse17Sep19Meas10Ana1.txt
-%   Analyse17Sep19Meas10Ana2.txt
-%   Analyse17Sep19Meas11Ana0.txt 150ml NaCl
-%   Analyse17Sep19Meas12Ana0.txt 200ml NaCl
-%   Analyse17Sep19Meas12Ana1.txt
-%
-% Different concentrations of DNA molecules
-%
-%   Analyse17Sep19Meas2Ana0.txt 2nM
-%   Analyse17Sep19Meas3Ana0.txt 10nM
-%   Analyse17Sep19Meas4Ana0.txt 200nM
-%   Analyse17Sep19Meas5Ana0.txt 400nM
-%   Analyse17Sep19Meas7Ana0.txt 1um = 1000mM
-%
-% Initial sample
-%
-%   Analyse17Sep19Meas1Ana0 
-%        Docking DNA binding to gold; measurement starts after 55s
-%   Analyse17Sep19Meas6Ana0 
-%        Complementary DNA transient interaction 
-%
-%
-% Simona's experiment (PGK)
-%
-% Double-peak structure
-%
-%   Analyse13Dec19Meas10AnaX 
-%       with X= 0, ..., 21
-%       Truly useful files: 3, 9, 21
-%   Analyse13Dec19Meas9Ana3
-%
-% Negative control
-% 
-%   Analyse06Mar20Meas10Ana0
-%   Analyse06Mar20Meas10Ana1
-%   Analyse06Mar20Meas10Ana2
-%   Analyse06Mar20Meas11Ana0
-%   Analyse06Mar20Meas11Ana1
+%   - Raw shifts and FWHMs are measured in nm
 
 %% Number line before the variable name header
 rearrangeInfo=regexp(fileread(filename),'\n','split');
