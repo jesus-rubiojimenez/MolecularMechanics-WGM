@@ -1,5 +1,5 @@
 function [proplikelihood] = model2gauss(time,lshift,A1,A2,W1,W2,T1,T2,sigma0)
-%model2gauss(time,A1,A2,W1,W2,T1,T2,sigma0)
+%model2gauss(time,lshift,A1,A2,W1,W2,T1,T2,sigma0)
 
 temp = 0;
 for i=1:length(time)
@@ -8,4 +8,3 @@ end
 proplikelihood = exp(-temp/(2*sigma0^2));
 
 end
-
