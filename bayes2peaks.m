@@ -250,8 +250,7 @@ for i=1:tauMC
         aux2=0;
     end
     
-    %tempCycleTime=tempCycleTime+(aux2*samplingW2(i)+aux1*samplingW1(i)+samplingT2(i)-samplingT1(i))*model2gauss(timeVarLoc,depVarLoc,samplingA1(i),samplingA2(i),samplingW1(i),samplingW2(i),samplingT1(i),samplingT2(i),sigma0);
-    tempCycleTime=tempCycleTime+(3*samplingW2(i)+3*samplingW1(i)+samplingT2(i)-samplingT1(i))*model2gauss(timeVarLoc,depVarLoc,samplingA1(i),samplingA2(i),samplingW1(i),samplingW2(i),samplingT1(i),samplingT2(i),sigma0);
+    tempCycleTime=tempCycleTime+(aux2*samplingW2(i)+aux1*samplingW1(i)+samplingT2(i)-samplingT1(i))*model2gauss(timeVarLoc,depVarLoc,samplingA1(i),samplingA2(i),samplingW1(i),samplingW2(i),samplingT1(i),samplingT2(i),sigma0);
 
     % Middle point (to find interevent times)
     middlePoint=middlePoint+0.5*(samplingT1(i)+samplingT2(i))*model2gauss(timeVarLoc,depVarLoc,samplingA1(i),samplingA2(i),samplingW1(i),samplingW2(i),samplingT1(i),samplingT2(i),sigma0);
