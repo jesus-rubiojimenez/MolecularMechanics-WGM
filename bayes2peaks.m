@@ -295,13 +295,14 @@ if optPlots==1
     figure('Name','Characterising molecular movement');
     plot(timeVarLoc,depVarLoc,'-','LineWidth',2)
     hold on
-    plot(timeEstSignal, estSignal1,'r','LineWidth',2)
-    plot(timeEstSignal, estSignal2,'r','LineWidth',2)
-    plot(timeEstSignal, estSignal,'k-.','LineWidth',2)
-    plot(timeVarLoc,sigma0*ones(1,length(timeVarLoc)),'--','Color',[0.5,0.5,0.5],'LineWidth',1.25);
+    plot(timeEstSignal, estSignal1,'k-.','LineWidth',2)
+    plot(timeEstSignal, estSignal2,'k--','LineWidth',2)
+    plot(timeEstSignal, estSignal,'r','LineWidth',2)
+    plot(timeVarLoc,3*sigma0*ones(1,length(timeVarLoc)),'--','Color',[0.5,0.5,0.5],'LineWidth',1.25);
     xlim([min(timeVarLoc) max(timeVarLoc)])
     xlabel('$t$ [s]','Interpreter','latex','FontSize',fontsize);
     ylabel('$\Delta \lambda$ [fm]','Interpreter','latex','FontSize',fontsize);
+    legend('Raw signal','1st peak','2nd peak','Two-peak signal','Noise level','NorthEast','Interpreter','latex','FontSize',fontsize-10);
     set(gca,'FontSize',fontsize,'FontName','Times')
     grid on
     hold off
