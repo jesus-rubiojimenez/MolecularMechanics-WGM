@@ -302,7 +302,7 @@ if optPlots==1
     xlim([min(timeVarLoc) max(timeVarLoc)])
     xlabel('$t$ [s]','Interpreter','latex','FontSize',fontsize);
     ylabel('$\Delta \lambda$ [fm]','Interpreter','latex','FontSize',fontsize);
-    legend('Raw signal','1st peak','2nd peak','Two-peak signal','Noise level','NorthEast','Interpreter','latex','FontSize',fontsize-10);
+    legend('Raw signal','1st peak','2nd peak','Two-peak signal','Noise level','Location','NorthEast','Interpreter','latex','FontSize',fontsize-10);
     set(gca,'FontSize',fontsize,'FontName','Times')
     grid on
     hold off
