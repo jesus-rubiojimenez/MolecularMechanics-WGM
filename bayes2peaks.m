@@ -80,7 +80,7 @@ timePeaksLeft=timeVarLoc(peaksLocLeft);
 T1priorGuess=sortedAmplLeft(1); % First peak
 A1priorGuess=depVarLoc(T1priorGuess==timeVarLoc);
 
-depVarRight=depVarLoc(indexValley:length(depVarLoc),1);
+depVarRight=depVarLoc(indexValley:length(depVarLoc),1); 
 [~, peaksLocRightAux]=findpeaks(depVarRight);
 depVarRightAux=depVarRight(peaksLocRightAux);
 peaksLocRight=zeros(1,length(depVarRightAux));
