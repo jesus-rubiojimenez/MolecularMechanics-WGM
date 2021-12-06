@@ -7,7 +7,7 @@ function [estBayesValues,estBayesSignal,estBayesData]=bayes2peaks(filename,modeN
 % J.Rubio-Jimenez@exeter.ac.uk
 %
 % Created: July 2020
-% Last update: June 2021
+% Last update: Dec 2021
 %
 % Estimation of PGK two-model signals when measured with a WGM sensor
 %
@@ -55,20 +55,11 @@ sigma0noise=wgmTraceNoise(filename,modeNum,timeSeries,initialTime,finalTime);
 sigma0=sigma0noise.sigma0moleSignal;
 sigma0amplitudes=sigma0noise.sigma0modelAmplitudes;
 
-% Detrended data (substracts noise due to environmental effects)
-detrendedData=wgmDetrend(filename,modeNum,timeSeries,max(valleyLoc-10,initialTime),min(valleyLoc+10,finalTime),0);
-timeVar=detrendedData.timeVar;
-depVar=detrendedData.detrendedVar;
-
-% Location of the double-peak
-dTime=timeVar(2)-timeVar(1);
-initialTimeLocal=valleyLoc-localLength/2;
-finalTimeLocal=valleyLoc+localLength/2;
-iTimeIndex=find(timeVar>initialTimeLocal & timeVar<initialTimeLocal+dTime);
-fTimeIndex=find(timeVar>finalTimeLocal & timeVar<finalTimeLocal+dTime);
-
-timeVarLoc=timeVar(iTimeIndex:fTimeIndex,1);
-depVarLoc=depVar(iTimeIndex:fTimeIndex,1);
+% Locally detrended data (substracts noise due to environmental effects)
+detrendedData=wgmDetrend(filename,modeNum,timeSeries,max(valleyLoc-localLength/2,initialTime),min(valleyLoc+localLength/2,finalTime),0);
+timeVarLoc=detrendedData.timeVar;
+depVarLoc=detrendedData.detrendedVar;
+dTime=timeVarLoc(2)-timeVarLoc(1);
 
 % Information for prior assignment
 indexValley=find(timeVarLoc>valleyLoc-dTime/2 & timeVarLoc<valleyLoc+dTime/2);
@@ -80,7 +71,7 @@ timePeaksLeft=timeVarLoc(peaksLocLeft);
 T1priorGuess=sortedAmplLeft(1); % First peak
 A1priorGuess=depVarLoc(T1priorGuess==timeVarLoc);
 
-depVarRight=depVarLoc(indexValley:length(depVarLoc),1); 
+depVarRight=depVarLoc(indexValley:length(depVarLoc),1);
 [~, peaksLocRightAux]=findpeaks(depVarRight);
 depVarRightAux=depVarRight(peaksLocRightAux);
 peaksLocRight=zeros(1,length(depVarRightAux));
@@ -292,7 +283,6 @@ estBayesData.depVarLoc=depVarLoc';
 
 if optPlots==1
     fontsize=30;
-    figure('Name','Characterising molecular movement');
     plot(timeVarLoc,depVarLoc,'-','LineWidth',2)
     hold on
     plot(timeEstSignal, estSignal1,'k-.','LineWidth',2)
