@@ -7,7 +7,7 @@ function [rawData] = wgmRawData(filename,modeNum,timeSeries,initialTime,finalTim
 % J.Rubio-Jimenez@exeter.ac.uk
 %
 % Created: August 2020
-% Last update: July 2021
+% Last update: May 2022
 % 
 % This function retrives the WGM sensor data from the .txt files. 
 
