@@ -48,10 +48,10 @@ varNameHeader=cell2mat(rearrangeInfo(headersRefNumber+1));
 fid=fopen(filename);
 
     % Single-mode file
-    %dataCell = textscan(fid, '%f%f%f', 'CommentStyle', {'File', varNameHeader}, 'CollectOutput',1);
+    dataCell = textscan(fid, '%f%f%f', 'CommentStyle', {'File', varNameHeader}, 'CollectOutput',1);
 
     % Two-mode file
-    dataCell = textscan(fid, '%f%f%f%f%f', 'CommentStyle', {'File', varNameHeader}, 'CollectOutput',1);
+    %dataCell = textscan(fid, '%f%f%f%f%f', 'CommentStyle', {'File', varNameHeader}, 'CollectOutput',1);
 
     % Three-mode file
     %dataCell = textscan(fid, '%f%f%f%f%f%f%f', 'CommentStyle', {'File', varNameHeader}, 'CollectOutput',1);
@@ -65,8 +65,8 @@ try
 catch
     error('Please change the variable dataCell to accommodate for the number of modes in your file')
 end
-iTimeIndex=find(rawDataComplete(:,1)>initialTime & rawDataComplete(:,1)<initialTime+timeStep);
-fTimeIndex=find(rawDataComplete(:,1)>finalTime & rawDataComplete(:,1)<finalTime+timeStep);
+iTimeIndex=find(rawDataComplete(:,1)>=initialTime & rawDataComplete(:,1)<=initialTime+timeStep);
+fTimeIndex=find(rawDataComplete(:,1)>=finalTime & rawDataComplete(:,1)<=finalTime+timeStep);
 numColumns=size(rawDataComplete,2);
 rawDataSelected=rawDataComplete(iTimeIndex:fTimeIndex,1:numColumns);
 
