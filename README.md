@@ -1,4 +1,4 @@
-# Numerical Toolbox for Single-Molecule PGK Data Analysis
+# Toolbox for single-molecule data analysis
 
-Numerical toolbox for analysing single-molecule PGK data obtained from a WGM sensor.  
-Main function: `bayes2peaks`
+Bayesian processing of PGK measurements from a WGM sensor.  
+Primary function: `bayes2peaks`
